@@ -9,64 +9,51 @@ export class PostRepository {
 
   async create(data: Prisma.PostCreateInput) {
     console.log("postsRepository:::::", data)
-    const post = await this.prismaService.post.create({ data })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.create({ data })
   }
 
   async update(where: Prisma.PostWhereUniqueInput, data: Prisma.PostUpdateInput) {
-    const post = await this.prismaService.post.update({ where, data })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.update({ where, data })
   }
 
   async updateMany(where: Prisma.PostWhereUniqueInput, data: Prisma.PostUpdateInput) {
-    const post = await this.prismaService.post.update({ where, data })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.update({ where, data })
   }
 
   async upsert(where: Prisma.PostWhereUniqueInput, update: Prisma.PostUpdateInput, create: Prisma.PostCreateInput) {
-    const post = await this.prismaService.post.upsert({ where, update, create })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.upsert({ where, update, create })
   }
 
   async findUnique(where: Prisma.PostWhereUniqueInput) {
-    const post = await this.prismaService.post.findUnique({ where })
-    return post
+    return this.prismaService.post.findUnique({ where })
   }
 
   async findUniqueWithoutField(where: Prisma.PostWhereUniqueInput, field: string) {
-    const post = await this.prismaService.post.findUnique({ where })
-    return this._exclude(post, [field])
+    return this.prismaService.post.findUnique({ where })
   }
 
-
   async findAll() {
-    const post = await this.prismaService.post.findMany()
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.findMany()
   }
 
   async findMany(where: Prisma.PostWhereInput) {
-    const post = await this.prismaService.post.findMany({ where })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.findMany({ where })
   }
 
   async findFirst(where: Prisma.PostWhereInput) {
-    const post = await this.prismaService.post.findFirst({ where })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.findFirst({ where })
   }
 
   async delete(where: Prisma.PostWhereUniqueInput) {
-    const post = await this.prismaService.post.delete({ where })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.delete({ where })
   }
 
   async deleteMany(where: Prisma.PostWhereInput) {
-    const post = await this.prismaService.post.deleteMany({ where })
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.deleteMany({ where })
   }
 
   async pagination(pages: { skip: number, take: number }) {
-    const post = await this.prismaService.post.findMany(pages)
-    return this._exclude(post, ['password'])
+    return this.prismaService.post.findMany(pages)
   }
 
   private _exclude(post: any, keys: string[]) {
